@@ -1,3 +1,8 @@
+*******************************************************************************;
+**************** 80-character banner for column width reference ***************;
+* (set window width to banner width to calibrate line length to 80 characters *;
+*******************************************************************************;
+
 *
 This file prepares the dataset described below for analysis.
 
@@ -14,3 +19,4 @@ This file prepares the dataset described below for analysis.
 [Data Dictionary] https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
 
 [Unique ID Schema] The column "Player ID" is a primary key. 
+;

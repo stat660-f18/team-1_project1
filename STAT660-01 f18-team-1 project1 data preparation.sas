@@ -10,7 +10,7 @@ This file prepares the dataset described below for analysis.
 
 [Experimental Units] FIFA 18 Players
 
-[Number of Observations] 17,995        
+[Number of Observations] 9,758        
 
 [Number of Features] 185
 
@@ -20,3 +20,25 @@ This file prepares the dataset described below for analysis.
 
 [Unique ID Schema] The column "Player ID" is a primary key. 
 ;
+
+
+* setup environmental parameters;
+%let inputDatasetURL =
+https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=true
+;
+
+
+* load raw FRPM dataset over the wire;
+filename tempfile TEMP;
+proc http
+    method="get"
+    url="&inputDatasetURL."
+    out=tempfile
+    ;
+run;
+proc import
+    file=tempfile
+    out=fifa18_raw
+    dbms=xls;
+run;
+filename tempfile clear;

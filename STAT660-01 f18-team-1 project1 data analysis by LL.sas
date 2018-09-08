@@ -1,5 +1,11 @@
 
 
+X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_FIFA_Player_Data.csv))))""";
+
+%include '.\STAT660-01 f18-team-1 project1 data preparation.sas';
+
+
+
 title1 'Research Question: What is the age distribution amongst each club in FIFA 18?';
 
 title2 'Rationale: This could help identify which countries tend to focus on creating their players from youth as opposed to those who purchase their players';

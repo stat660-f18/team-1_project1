@@ -42,3 +42,91 @@ proc import
     dbms=xls;
 run;
 filename tempfile clear;
+%end;
+%mend;
+
+%loadDataIfNotAlreadyAvailable(
+    fifa18_raw,
+    &inputDatasetURL.,
+    xls
+)
+
+
+* check raw fifa18 dataset for duplicates with respect to its composite key;
+proc sort
+        nodupkey
+        data=fifa18_raw
+        dupout=fifa18_raw_dups
+        out=_null_
+    ;
+    by
+       Player ID
+    ;
+run;
+
+* build analytic dataset from fifa18 dataset with the least number of columns and
+minimal cleaning/transformation needed to address research questions in
+corresponding data-analysis files;
+
+data fifa18_analytic_file;
+    retain
+        Club
+        Special
+        Age
+        League
+        birth_date
+        height_cm
+        weight_kg
+        body_type
+        nationality
+        eur_value
+        eur_wage
+        overall
+    ;
+    keep
+        
+        Club
+        Special
+        Age
+        League
+        birth_date
+        height_cm
+        weight_kg
+        body_type
+        nationality
+        eur_value
+        eur_wage
+        overall
+    ;
+    set fifa18_raw;
+run;
+
+* 
+Use PROC MEANS to compute the mean of eur_wage for
+League, and output the results to a temporary dataset, and use PROC SORT
+to extract and sort just the means the temporary dateset, which will be used as
+part of data analysis by LL.
+;
+proc means
+        mean
+        noprint
+        data=fifa18_analytic_file
+    ;
+    class
+        League
+    ;
+    var
+        eur_wage
+    ;
+    output
+        out=fifa18_analytic_file_temp
+    ;
+run;
+
+proc sort
+        data=fifa18_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by
+        descending eur_wage
+    ;
+run;

@@ -8,9 +8,11 @@
 *
 This file uses the following analytic dataset to address several research
 questions regarding FIFA 18 user information
+
 Dataset Name: FIFA_Player_Data created in external file
 STAT660-01_f18-team-1_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 

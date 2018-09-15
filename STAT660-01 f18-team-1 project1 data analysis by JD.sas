@@ -20,49 +20,84 @@ See included file for dataset properties
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
-* load external file that generates analytic dataset FRPM1516_analytic_file;
+* load external file that generates analytic dataset FIFA18_analytic_file;
 %include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 
 
 *
-Research Question: What is the nationality distribution percentages of the FIFA 
-18 players?
+Research Question: Are there any differences in the mean wages for each nationality?
 
-Rationale: This should help identify which country does mostly the FIFA 18 
-players come from.
+Rationale: This should help us understand if the difference of nationality results 
+in various mean wages.
 
-Methodology: 
+Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
+the relationship between nationality and mean wages.
 
-Limitations: 
+Limitations: Although we reach the conclusion that the difference of nationality leads
+to different mean wage, it's difficult for us to quickly find the nationality which 
+has the highest mean wage.
 
-Possible Follow-up Steps: 
+Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute the mean
+wages for each nationality and sort the mean in descending order.
 ;
+
+proc glm data=fifa18_analytic_file;
+class nationality;
+model eur_wage = nationality/solution; 
+Run;
+Quit;
+
 
 
 *
-Research Question:  How does the distribution of “Skill Moves” for players who 
-was born after 1990 compare to that was born before 1990?
+Research Question:  How does the distribution of “special” for each body 
+type?
 
-Rationale: This would help inform whether players born before 1990 are more 
-familiar with using Skill Moves in FIFA 18.
+Rationale: This helps identify the minimum, median, and maximunm "special" value, 
+as well as the special value in first and third quarter for each body type.
 
-Methodology: 
+Methodology: Compute five-number summaries by body-type indicator variable
 
-Limitations: 
+Limitations: The distribution of "special" value is not visualized. 
 
-Possible Follow-up Steps: 
+Possible Follow-up Steps: we can use PROC SGPLOT statement to draw a line 
+chart or bar graph, which presents the distribution more explicit.
 ;
 
+proc means min q1 median q3 max data=fifa18_analytic_file;
+    class body_type;
+    var special;
+run;
 
 *
-Research Question: What is the percentage of each body type in FIFA 18? 
+Research Question: What are the top 3 clubs with the highest mean value?
 
-Rationale: This would help determine which body type is the most popular
-and the least popular in FIFA 18 players.
+Rationale: This would help determine which 3 clubs contribute most to high
+user value.
 
-Methodology: 
+Methodology: Use PROC MEANS to compute the mean of eur_value for user club, 
+and output the results to a temportatry dataset. Use PROC SORT extract and 
+sort just the means the temporary dateset, and use PROC PRINT to print just 
+the first three observations from the temporary dataset.
 
-Limitations: 
+Limitations: We cannot use this methodology to identify the club with the
+highest absolute value(not mean value).
 
-Possible Follow-up Steps: 
+Possible Follow-up Steps: We can leave out the PROC MEANS step to simply 
+find out the club with the highest user value.
 ;
+
+proc means mean noprint data=fifa18_analytic_file;
+    class club;
+    var eur_value;
+    output out=fifa18_analytic_file_temp1;
+run;
+
+proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"));
+    by descending eur_value;
+run;
+
+proc print noobs data=fifa18_analytic_file_temp(obs=3);
+    id club;
+    var eur_value;
+run;

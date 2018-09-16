@@ -26,8 +26,6 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT660-01 f18-team-1 project1 data preparation.sas'
 ;
 
-
-
 title1 'Research Question: What is the age distribution amongst each club in FIFA 18?'
 ;
 
@@ -45,6 +43,10 @@ players are reserves
 Possible Follow Up: Maybe a variable for starting position on the team whether it is starter, bench, or reserves
 ;
 
+proc freq data=fifa18_analytic_file; 
+   tables age*club; 
+run;
+
 title1 'Research Question: How does the body type distribution differ in each league and is there a correlation with salary based on the preferences of each league?'
 ; 
 title2 'Rationale: This would help determine if leagues prefer different types of player body types based on league playstyles'
@@ -61,7 +63,11 @@ Possible Follow Up: Perhaps we could do the focus more on weight and height in o
 prefers a faster/lighter finesse player or a physically bigger and muscular "power" player 
 ;
 
-title1 'Research Question: What is the Euro Value and Euro Wage distribution amongst each league and nationality in FIFA 18?'
+proc freq data=fifa18_analytic_file; 
+   tables league*eur_wage*body_type; 
+run;
+
+title1 'Research Question: What is the Euro Value distribution amongst each league and nationality in FIFA 18?'
 ; 
 title2 'Rationale: This could correlate based off the first question determining which teams "buy their trophies" as opposed to work for them'
 ;
@@ -75,5 +81,8 @@ buy their trophies and players as opposed to raising their youth to play in thei
  
 Possible Follow Up: Perhaps we could determine the distribution of foreign players in each league and then take the mean salaries and values 
 of each leauge based on that percentage of non-home grown players
-
 ;
+
+proc freq data=fifa18_analytic_file; 
+   tables league*nationality*euro_value / crosslist; 
+run;

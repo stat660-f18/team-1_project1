@@ -33,14 +33,16 @@ title2 'Rationale: This could help identify which countries tend to focus on cre
 ;
 
 *
-Methodology: I think we could take the proc means of the age variable and base it off the clubs and even possibly 
-get a by league by club break down to understand the age distribution amongst top clubs and top leagues
+Methodology: I think we could take the proc means of the age variable and base
+it off the clubs and even possibly get a by league by club break down to 
+understand the age distribution amongst top clubs and top leagues
 
 
-Limitations: I think our analysis won't account for which players are designated starters on the team and which
-players are reserves
+Limitations: I think our analysis won't account for which players are 
+designated starters on the team and which players are reserves
  
-Possible Follow Up: Maybe a variable for starting position on the team whether it is starter, bench, or reserves
+Possible Follow Up: Maybe a variable for starting position on the team whether 
+it is starter, bench, or reserves
 ;
 
 proc freq data=fifa18_analytic_file; 
@@ -53,14 +55,17 @@ title2 'Rationale: This would help determine if leagues prefer different types o
 ;
 
 *
-Methodology: Could proc sort body type by leagues and then find the mean salary of players based off body types to find
-any correlation amongst leagues that might prefer more finesse players versus physical players
+Methodology: Could proc sort body type by leagues and then find the mean salary
+of players based off body types to find any correlation amongst leagues that 
+might prefer more finesse players versus physical players
 
-Limitations: I can see how the data might not tell us much as I am sure player position might play a role on what body type
-a club would want that player to have.
+Limitations: I can see how the data might not tell us much as I am sure player 
+position might play a role on what body type a club would want that player to 
+have.
  
-Possible Follow Up: Perhaps we could do the focus more on weight and height in order to determine whether a league
-prefers a faster/lighter finesse player or a physically bigger and muscular "power" player 
+Possible Follow Up: Perhaps we could do the focus more on weight and height in 
+order to determine whether a league prefers a faster/lighter finesse player or 
+a physically bigger and muscular "power" player 
 ;
 
 proc freq data=fifa18_analytic_file; 
@@ -73,14 +78,18 @@ title2 'Rationale: This could correlate based off the first question determining
 ;
 
 *
-Methodology: Could we take the median and range of salaries based off of clubs, leagues, and nationality, to see if there is a
-possible trend in the types of players that clubs spend money on (i.e. Brazilian) as well as the top clubs versus the smaller clubs
+Methodology: Could we take the median and range of salaries based off of clubs,
+leagues, and nationality, to see if there is a possible trend in the types of 
+players that clubs spend money on (i.e. Brazilian) as well as the top clubs 
+versus the smaller clubs
 
-Limitations: I think the question or data might be too broad, would need to identify the best way to determine which leagues and/or clubs
-buy their trophies and players as opposed to raising their youth to play in their clubs 
+Limitations: I think the question or data might be too broad, would need to 
+identify the best way to determine which leagues and/or clubs buy their 
+trophies and players as opposed to raising their youth to play in their clubs 
  
-Possible Follow Up: Perhaps we could determine the distribution of foreign players in each league and then take the mean salaries and values 
-of each leauge based on that percentage of non-home grown players
+Possible Follow Up: Perhaps we could determine the distribution of foreign 
+players in each league and then take the mean salaries and values of each 
+leauge based on that percentage of non-home grown players
 ;
 
 proc freq data=fifa18_analytic_file; 

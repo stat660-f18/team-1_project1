@@ -42,14 +42,7 @@ proc import
     dbms=xls;
 run;
 filename tempfile clear;
-%end;
-%mend;
 
-%loadDataIfNotAlreadyAvailable(
-    fifa18_raw,
-    &inputDatasetURL.,
-    xls
-)
 
 
 * check raw fifa18 dataset for duplicates with respect to its composite key;

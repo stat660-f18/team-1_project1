@@ -41,16 +41,16 @@ Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute
 wages for each nationality and sort the mean in descending order.
 ;
 
-proc glm data=fifa18_analytic_file;
-class nationality;
-model eur_wage = nationality/solution; 
+proc glm data=fifa18_analytic_file; 
+    class nationality;
+    model eur_wage = nationality/solution; 
 Run;
 Quit;
 
 
 
 *
-Research Question:  How does the distribution of ìspecialî for each body 
+Research Question:  How does the distribution of ‚Äúspecial‚Äù for each body 
 type?
 
 Rationale: This helps identify the minimum, median, and maximunm "special" value, 
@@ -93,7 +93,7 @@ proc means mean noprint data=fifa18_analytic_file;
     output out=fifa18_analytic_file_temp1;
 run;
 
-proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"));
+proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="mean"));
     by descending eur_value;
 run;
 

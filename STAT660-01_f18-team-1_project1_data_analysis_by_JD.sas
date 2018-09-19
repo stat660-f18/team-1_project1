@@ -93,7 +93,7 @@ proc means mean noprint data=fifa18_analytic_file;
     output out=fifa18_analytic_file_temp1;
 run;
 
-proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="mean"));
+proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"));
     by descending eur_value;
 run;
 

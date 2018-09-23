@@ -173,3 +173,15 @@ proc sort
         descending eur_wage
     ;
 run;
+
+
+
+proc means mean noprint data=fifa18_analytic_file;
+    class club;
+    var eur_value;
+    output out=fifa18_analytic_file_temp1;
+run;
+
+proc sort data=fifa18_analytic_file_temp1(where=(_stat_="mean"));
+    by descending eur_value;
+run;

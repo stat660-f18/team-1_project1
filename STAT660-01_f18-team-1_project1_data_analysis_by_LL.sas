@@ -45,13 +45,23 @@ Possible Follow Up: Maybe a variable for starting position on the team whether
 it is starter, bench, or reserves
 ;
 
-proc freq data=fifa18_analytic_file; 
-   tables age*club; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+   	tables 
+		age*club
+	; 
 run;
 
-title1 'Research Question: How does the body type distribution differ in each league and is there a correlation with salary based on the preferences of each league?'
-; 
-title2 'Rationale: This would help determine if leagues prefer different types of player body types based on league playstyles'
+title1 'Research Question: What is the age distribution amongst each club in FIFA 18?'
+;
+
+title2 'Rationale: This could help identify which countries tend to focus on creating their players from youth as opposed to those who purchase their players'
+;
+
+footnote1
+'seems that most leagues with a higher age distribution are amongst asian, usa, and english leagues
+while a  much younger age distribution is amongst latin american teams and african teams'
 ;
 
 *
@@ -68,13 +78,22 @@ order to determine whether a league prefers a faster/lighter finesse player or
 a physically bigger and muscular "power" player 
 ;
 
-proc freq data=fifa18_analytic_file; 
-   tables league*eur_wage*body_type; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+  	tables 
+		league*eur_wage*body_type
+	; 
 run;
 
 title1 'Research Question: What is the Euro Value distribution amongst each league and nationality in FIFA 18?'
 ; 
 title2 'Rationale: This could correlate based off the first question determining which teams "buy their trophies" as opposed to work for them'
+;
+
+footnote1
+'based on the above tables we can see that the german, african, and english leagues 
+favor a bigger body type then latin teams who prefer a smaller body type'
 ;
 
 *
@@ -92,6 +111,21 @@ players in each league and then take the mean salaries and values of each
 leauge based on that percentage of non-home grown players
 ;
 
-proc freq data=fifa18_analytic_file; 
-   tables league*nationality*euro_value / crosslist; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+   	tables 
+		league*nationality*euro_value / crosslist
+	; 
 run;
+
+title1 'Research Question: How does the body type distribution differ in each league and is there a correlation with salary based on the preferences of each league?'
+; 
+title2 'Rationale: This would help determine if leagues prefer different types of player body types based on league playstyles'
+;
+
+footnote1
+'body type does not necessarily correlate with value, might want to check and see if we
+can tie this more over to skill level or game statistics as body type does not
+associate over with skill level'
+;

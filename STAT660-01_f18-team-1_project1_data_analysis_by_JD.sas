@@ -24,13 +24,21 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 
 
+title 1
+'Research Question: Are there any differences in the mean wages for each 
+nationality?'
+;
+
+title 2
+'Rationale: This should help us understand if the difference of nationality results 
+in various mean wages.'
+;
+
+footnote1
+'From the output, we can know that users from different country have different 
+mean wages'
+;
 *
-Research Question: Are there any differences in the mean wages for each 
-nationality?
-
-Rationale: This should help us understand if the difference of nationality results 
-in various mean wages.
-
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
 the relationship between nationality and mean wages.
 
@@ -41,22 +49,42 @@ nationality which has the highest mean wage.
 Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute 
 the mean wages for each nationality and sort the mean in descending order.
 ;
-
-proc glm data=fifa18_analytic_file; 
-    class nationality;
-    model eur_wage = nationality/solution; 
+proc glm 
+		data=fifa18_analytic_file
+	; 
+    class 
+		nationality
+	;
+    model 
+		eur_wage = nationality/solution
+	; 
 Run;
 Quit;
+title;
+footnote;
 
 
 
+title 1
+'Research Question:  How does the distribution of special skills for each body 
+type?'
+;
+
+title 2
+'Rationale: This helps identify the minimum, median, and maximunm "special" value, 
+as well as the special value in first and third quarter for each body type.'
+;
+
+footnote1
+'From the output, we know that users with the "normal" body type have the highest 
+maximum special.' 
+;
+
+footnote2
+'We can also find out that users with "normal" body type have the lowest minimum
+special too.'
+;
 *
-Research Question:  How does the distribution of “special” for each body 
-type?
-
-Rationale: This helps identify the minimum, median, and maximunm "special" value, 
-as well as the special value in first and third quarter for each body type.
-
 Methodology: Compute five-number summaries by body-type indicator variable
 
 Limitations: The distribution of "special" value is not visualized. 
@@ -64,41 +92,60 @@ Limitations: The distribution of "special" value is not visualized.
 Possible Follow-up Steps: we can use PROC SGPLOT statement to draw a line 
 chart or bar graph, which presents the distribution more explicit.
 ;
-
-proc means min q1 median q3 max data=fifa18_analytic_file;
-    class body_type;
-    var special;
+proc means 
+		min q1 median q3 max 
+		data=fifa18_analytic_file
+	;
+    class 
+		body_type
+	;
+    var 
+		special
+	;
 run;
+title;
+footnote;
 
+
+
+title 1
+'Research Question: What are the top 3 clubs with the highest mean value?'
+;
+
+title 2
+'Rationale: This would help determine which 3 clubs contribute most to high
+user value.'
+;
+
+footnote1
+'From the result, we know that FC Bayern Munich has the highest mean value
+of 36881250.'
+;
+
+footnote2
+'We can also see that Real Madrid CF and FC Barcelona rank the second and 
+the third, respectively.'
+;
 *
-Research Question: What are the top 3 clubs with the highest mean value?
-
-Rationale: This would help determine which 3 clubs contribute most to high
-user value.
-
-Methodology: Use PROC MEANS to compute the mean of eur_value for user club, 
-and output the results to a temportatry dataset. Use PROC SORT extract and 
-sort just the means the temporary dateset, and use PROC PRINT to print just 
-the first three observations from the temporary dataset.
+Methodology: Use PROC PRINT to print just the first three observations 
+from the temporary dataset
 
 Limitations: We cannot use this methodology to identify the club with the
 highest absolute value(not mean value).
 
 Possible Follow-up Steps: We can leave out the PROC MEANS step to simply 
-find out the club with the highest user value.
+find out the club with the highest user value
 ;
-
-proc means mean noprint data=fifa18_analytic_file;
-    class club;
-    var eur_value;
-    output out=fifa18_analytic_file_temp1;
+proc print 			
+		noobs 
+		data=fifa18_analytic_file_temp1(obs=3)
+	;
+    id 
+		club
+	;
+    var 
+		eur_value
+	;
 run;
-
-proc sort data=fifa18_analytic_file_temp1(where=(_stat_="mean"));
-    by descending eur_value;
-run;
-
-proc print noobs data=fifa18_analytic_file_temp(obs=3);
-    id club;
-    var eur_value;
-run;
+title;
+footnote;

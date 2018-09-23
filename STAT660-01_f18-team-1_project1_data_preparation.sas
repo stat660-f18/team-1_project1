@@ -89,7 +89,6 @@ data fifa18_analytic_file;
         overall
     ;
     keep
-        
         Club
         Special
         Age

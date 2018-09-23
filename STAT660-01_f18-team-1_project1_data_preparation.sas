@@ -29,19 +29,34 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
 
 
 * load raw FRPM dataset over the wire;
-filename tempfile TEMP;
-proc http
-    method="get"
-    url="&inputDatasetURL."
-    out=tempfile
-    ;
-run;
-proc import
-    file=tempfile
-    out=fifa18_raw
-    dbms=xls;
-run;
-filename tempfile clear;
+%macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
+    %put &=dsn;
+    %put &=url;
+    %put &=filetype;
+    %if
+        %sysfunc(exist(&dsn.)) = 0
+    %then
+        %do;
+            %put Loading dataset &dsn. over the wire now...;
+			filename tempfile TEMP;
+			proc http
+			    method="get"
+			    url="&inputDatasetURL."
+			    out=tempfile
+			    ;
+			run;
+			proc import
+			    file=tempfile
+			    out=fifa18_raw
+			    dbms=xls;
+			run;
+			filename tempfile clear;
+		%end;
+    %else
+        %do;
+            %put Dataset &dsn. already exists. Please delete and try again.;
+        %end;
+%mend;
 
 
 
@@ -103,8 +118,12 @@ to extract and sort just the means the temporary dateset, which will be used as
 part of data analysis by LL.
 ;
 
-proc freq data=fifa18_analytic_file; 
-   tables league*eur_wage*body_type; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+  	tables 
+		league*eur_wage*body_type
+	; 
 run;
 
 title1 'Research Question: What is the Euro Value distribution amongst each league and nationality in FIFA 18?'
@@ -118,8 +137,12 @@ favor a bigger body type then latin teams who prefer a smaller body type'
 ;
 
 
-proc freq data=fifa18_analytic_file; 
-   tables league*nationality*euro_value / crosslist; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+   	tables 
+		league*nationality*euro_value / crosslist
+	; 
 run;
 
 title1 'Research Question: How does the body type distribution differ in each league and is there a correlation with salary based on the preferences of each league?'
@@ -134,8 +157,12 @@ associate over with skill level'
 ;
 
 
-proc freq data=fifa18_analytic_file; 
-   tables age*club; 
+proc freq 
+		data=fifa18_analytic_file
+	; 
+   	tables 
+		age*club
+	; 
 run;
 
 title1 'Research Question: What is the age distribution amongst each club in FIFA 18?'
@@ -181,12 +208,26 @@ and output the results to a temportatry dataset. Use PROC SORT extract and
 sort just the means the temporary dateset;
 
 
-proc means mean noprint data=fifa18_analytic_file;
-    class club;
-    var eur_value;
-    output out=fifa18_analytic_file_temp1;
+proc means 
+		mean 
+		noprint 
+		data=fifa18_analytic_file
+	;
+    class 
+		club
+	;
+    var 
+		eur_value
+	;
+    output 
+		out=fifa18_analytic_file_temp1
+	;
 run;
 
-proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"));
-    by descending eur_value;
+proc sort 
+		data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"))
+	;
+   	by 
+		descending eur_value
+	;
 run;

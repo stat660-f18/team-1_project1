@@ -25,7 +25,8 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 *
-Research Question: Are there any differences in the mean wages for each nationality?
+Research Question: Are there any differences in the mean wages for each 
+nationality?
 
 Rationale: This should help us understand if the difference of nationality results 
 in various mean wages.
@@ -33,12 +34,12 @@ in various mean wages.
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
 the relationship between nationality and mean wages.
 
-Limitations: Although we reach the conclusion that the difference of nationality leads
-to different mean wage, it's difficult for us to quickly find the nationality which 
-has the highest mean wage.
+Limitations: Although we reach the conclusion that the difference of nationality 
+leads to different mean wage, it's difficult for us to quickly find the 
+nationality which has the highest mean wage.
 
-Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute the mean
-wages for each nationality and sort the mean in descending order.
+Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute 
+the mean wages for each nationality and sort the mean in descending order.
 ;
 
 proc glm data=fifa18_analytic_file; 

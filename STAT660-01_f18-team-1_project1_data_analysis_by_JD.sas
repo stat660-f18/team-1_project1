@@ -76,10 +76,8 @@ Research Question: What are the top 3 clubs with the highest mean value?
 Rationale: This would help determine which 3 clubs contribute most to high
 user value.
 
-Methodology: Use PROC MEANS to compute the mean of eur_value for user club, 
-and output the results to a temportatry dataset. Use PROC SORT extract and 
-sort just the means the temporary dateset, and use PROC PRINT to print just 
-the first three observations from the temporary dataset.
+Methodology: Use PROC PRINT to print just the first three observations 
+from the temporary dataset.
 
 Limitations: We cannot use this methodology to identify the club with the
 highest absolute value(not mean value).
@@ -87,16 +85,6 @@ highest absolute value(not mean value).
 Possible Follow-up Steps: We can leave out the PROC MEANS step to simply 
 find out the club with the highest user value.
 ;
-
-proc means mean noprint data=fifa18_analytic_file;
-    class club;
-    var eur_value;
-    output out=fifa18_analytic_file_temp1;
-run;
-
-proc sort data=fifa18_analytic_file_temp1(where=(_stat_="mean"));
-    by descending eur_value;
-run;
 
 proc print noobs data=fifa18_analytic_file_temp(obs=3);
     id club;

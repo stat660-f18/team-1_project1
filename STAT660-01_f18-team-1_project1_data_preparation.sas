@@ -175,6 +175,11 @@ proc sort
 run;
 
 
+*
+Use PROC MEANS to compute the mean of eur_value for user club, 
+and output the results to a temportatry dataset. Use PROC SORT extract and 
+sort just the means the temporary dateset
+
 
 proc means mean noprint data=fifa18_analytic_file;
     class club;

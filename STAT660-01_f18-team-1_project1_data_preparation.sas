@@ -27,7 +27,6 @@ This file prepares the dataset described below for analysis.
 https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=true
 ;
 
-
 * load raw FRPM dataset over the wire;
 %macro loadDataIfNotAlreadyAvailable(dsn,url,filetype);
     %put &=dsn;
@@ -57,8 +56,6 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
             %put Dataset &dsn. already exists. Please delete and try again.;
         %end;
 %mend;
-
-
 
 * check raw fifa18 dataset for duplicates with respect to its composite key;
 proc sort
@@ -109,8 +106,6 @@ data fifa18_analytic_file;
     set fifa18_raw;
 run;
 
-
-
 * 
 Use PROC MEANS to compute the mean of eur_wage for
 League, and output the results to a temporary dataset, and use PROC SORT
@@ -156,7 +151,6 @@ can tie this more over to skill level or game statistics as body type does not
 associate over with skill level'
 ;
 
-
 proc freq 
 		data=fifa18_analytic_file
 	; 
@@ -175,7 +169,6 @@ footnote1
 'seems that most leagues with a higher age distribution are amongst asian, usa, and english leagues
 while a  much younger age distribution is amongst latin american teams and african teams'
 ;
-
 
 proc means
         mean
@@ -201,12 +194,10 @@ proc sort
     ;
 run;
 
-
 *
 Use PROC MEANS to compute the mean of eur_value for user club, 
 and output the results to a temportatry dataset. Use PROC SORT extract and 
 sort just the means the temporary dateset;
-
 
 proc means 
 		mean 

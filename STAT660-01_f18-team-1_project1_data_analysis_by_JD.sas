@@ -49,12 +49,19 @@ nationality which has the highest mean wage.
 Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute 
 the mean wages for each nationality and sort the mean in descending order.
 ;
-
-proc glm data=fifa18_analytic_file; 
-    class nationality;
-    model eur_wage = nationality/solution; 
+proc glm 
+		data=fifa18_analytic_file
+	; 
+    class 
+		nationality
+	;
+    model 
+		eur_wage = nationality/solution
+	; 
 Run;
 Quit;
+title;
+footnote;
 
 
 
@@ -85,11 +92,19 @@ Limitations: The distribution of "special" value is not visualized.
 Possible Follow-up Steps: we can use PROC SGPLOT statement to draw a line 
 chart or bar graph, which presents the distribution more explicit.
 ;
-
-proc means min q1 median q3 max data=fifa18_analytic_file;
-    class body_type;
-    var special;
+proc means 
+		min q1 median q3 max 
+		data=fifa18_analytic_file
+	;
+    class 
+		body_type
+	;
+    var 
+		special
+	;
 run;
+title;
+footnote;
 
 
 
@@ -121,7 +136,16 @@ highest absolute value(not mean value).
 Possible Follow-up Steps: We can leave out the PROC MEANS step to simply 
 find out the club with the highest user value
 ;
-proc print noobs data=fifa18_analytic_file_temp1(obs=3);
-    id club;
-    var eur_value;
+proc print 			
+		noobs 
+		data=fifa18_analytic_file_temp1(obs=3)
+	;
+    id 
+		club
+	;
+    var 
+		eur_value
+	;
 run;
+title;
+footnote;

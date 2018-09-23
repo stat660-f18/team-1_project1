@@ -24,13 +24,16 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 %include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 
 
-*
+title 1
 Research Question: Are there any differences in the mean wages for each 
 nationality?
+;
 
+title 2
 Rationale: This should help us understand if the difference of nationality results 
 in various mean wages.
-
+;
+*
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
 the relationship between nationality and mean wages.
 
@@ -50,13 +53,16 @@ Quit;
 
 
 
-*
+title 1
 Research Question:  How does the distribution of “special” for each body 
 type?
+;
 
+title 2
 Rationale: This helps identify the minimum, median, and maximunm "special" value, 
 as well as the special value in first and third quarter for each body type.
-
+;
+*
 Methodology: Compute five-number summaries by body-type indicator variable
 
 Limitations: The distribution of "special" value is not visualized. 
@@ -70,12 +76,17 @@ proc means min q1 median q3 max data=fifa18_analytic_file;
     var special;
 run;
 
-*
-Research Question: What are the top 3 clubs with the highest mean value?
 
+
+title 1
+Research Question: What are the top 3 clubs with the highest mean value?
+;
+
+title 2
 Rationale: This would help determine which 3 clubs contribute most to high
 user value.
-
+;
+*
 Methodology: Use PROC PRINT to print just the first three observations 
 from the temporary dataset.
 

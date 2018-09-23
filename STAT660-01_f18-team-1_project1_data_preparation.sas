@@ -167,7 +167,7 @@ proc means
 run;
 
 proc sort
-        data=fifa18_analytic_file_temp(where=(_STAT_="MEAN"))
+        data=fifa18_analytic_file_temp(where=(_stat_="mean"))
     ;
     by
         descending eur_wage
@@ -178,7 +178,7 @@ run;
 *
 Use PROC MEANS to compute the mean of eur_value for user club, 
 and output the results to a temportatry dataset. Use PROC SORT extract and 
-sort just the means the temporary dateset
+sort just the means the temporary dateset;
 
 
 proc means mean noprint data=fifa18_analytic_file;
@@ -187,6 +187,6 @@ proc means mean noprint data=fifa18_analytic_file;
     output out=fifa18_analytic_file_temp1;
 run;
 
-proc sort data=fifa18_analytic_file_temp1(where=(_stat_="mean"));
+proc sort data=fifa18_analytic_file_temp1(where=(_STAT_="MEAN"));
     by descending eur_value;
 run;

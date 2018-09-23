@@ -25,13 +25,18 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title 1
-Research Question: Are there any differences in the mean wages for each 
-nationality?
+'Research Question: Are there any differences in the mean wages for each 
+nationality?'
 ;
 
 title 2
-Rationale: This should help us understand if the difference of nationality results 
-in various mean wages.
+'Rationale: This should help us understand if the difference of nationality results 
+in various mean wages.'
+;
+
+footnote1
+'From the output, we can know that users from different country have different 
+mean wages'
 ;
 *
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
@@ -54,13 +59,23 @@ Quit;
 
 
 title 1
-Research Question:  How does the distribution of “special” for each body 
-type?
+'Research Question:  How does the distribution of special skills for each body 
+type?'
 ;
 
 title 2
-Rationale: This helps identify the minimum, median, and maximunm "special" value, 
-as well as the special value in first and third quarter for each body type.
+'Rationale: This helps identify the minimum, median, and maximunm "special" value, 
+as well as the special value in first and third quarter for each body type.'
+;
+
+footnote1
+'From the output, we know that users with the "normal" body type have the highest 
+maximum special.' 
+;
+
+footnote2
+'We can also find out that users with "normal" body type have the lowest minimum
+special too.'
 ;
 *
 Methodology: Compute five-number summaries by body-type indicator variable
@@ -79,25 +94,34 @@ run;
 
 
 title 1
-Research Question: What are the top 3 clubs with the highest mean value?
+'Research Question: What are the top 3 clubs with the highest mean value?'
 ;
 
 title 2
-Rationale: This would help determine which 3 clubs contribute most to high
-user value.
+'Rationale: This would help determine which 3 clubs contribute most to high
+user value.'
+;
+
+footnote1
+'From the result, we know that FC Bayern Munich has the highest mean value
+of 36881250.'
+;
+
+footnote2
+'We can also see that Real Madrid CF and FC Barcelona rank the second and 
+the third, respectively.'
 ;
 *
 Methodology: Use PROC PRINT to print just the first three observations 
-from the temporary dataset.
+from the temporary dataset
 
 Limitations: We cannot use this methodology to identify the club with the
 highest absolute value(not mean value).
 
 Possible Follow-up Steps: We can leave out the PROC MEANS step to simply 
-find out the club with the highest user value.
+find out the club with the highest user value
 ;
-
-proc print noobs data=fifa18_analytic_file_temp(obs=3);
+proc print noobs data=fifa18_analytic_file_temp1(obs=3);
     id club;
     var eur_value;
 run;

@@ -58,8 +58,8 @@ proc glm
     model 
 		eur_wage = nationality/solution
 	; 
-Run;
-Quit;
+run;
+quit;
 title;
 footnote;
 

@@ -83,7 +83,7 @@ footnote1
 ;
 
 footnote2
-'This infers that choosing a "normal" body tpye doesn't affect the "special" value.'
+'This infers that choosing the normal body type does not affect the special value'
 ;
 
 footnote3

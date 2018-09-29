@@ -33,11 +33,11 @@ title 2
 ;
 
 footnote1
-'From the output, we can know that users from different country have different mean wages'
+'From the output, we can know that users from different country have different mean wages.'
 ;
 
 footnote2
-'By analyzing the result, we can infer that users from European countries tend to have hight wages than users from other countries'
+'By analyzing the result, we can infer that users from European countries tend to have hight wages than users from other countries.'
 ;
 
 footnote3
@@ -83,11 +83,11 @@ footnote1
 ;
 
 footnote2
-'This infers that choosing the normal body type does not affect the special value'
+'This infers that choosing the normal body type does not affect the special value.'
 ;
 
 footnote3
-'The reason is that the special value is not related to body type. There is no direct relationship between them'
+'The reason is that the special value is not related to body type. There is no direct relationship between them.'
 ;
 *
 Methodology: Compute five-number summaries by body-type indicator variable
@@ -126,11 +126,11 @@ footnote1
 ;
 
 footnote2
-'This result shows that joing FC Bayern Munich club may be helpful for the users to get a high value'
+'This result shows that joing FC Bayern Munich club may be helpful for the users to get a high value.'
 ;
 
 footnote3
-'The reason is that the users in the FC Bayern Munich are more skillful in playing FIFA18'
+'The reason is that the users in the FC Bayern Munich are more skillful in playing FIFA18.'
 ;
 *
 Methodology: Use PROC PRINT to print just the first three observations 

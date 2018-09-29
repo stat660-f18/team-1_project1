@@ -42,6 +42,7 @@ footnote2
 
 footnote3
 'This conclusion may be explained by the fact that Europeans usually contribute more time in playing this game.'
+;
 *
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
 the relationship between nationality and mean wages.

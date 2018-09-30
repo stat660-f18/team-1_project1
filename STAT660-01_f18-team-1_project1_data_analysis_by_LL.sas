@@ -23,6 +23,7 @@ See included file for dataset properties
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))"""
 ;
 
+* load external file that generates analytic dataset fifa18_analytic_file;
 %include '.\STAT660-01 f18-team-1 project1 data preparation.sas'
 ;
 
@@ -64,6 +65,14 @@ footnote1
 while a  much younger age distribution is amongst latin american teams and african teams'
 ;
 
+footnote2
+'This is important to understand why some leagues are of higher caliber as well as why some countries perform better in international tournaments'
+;
+
+footenote3
+'I believe this is the case since some countries are behind infrastructure wise and prefer to buy the star players then to focus on youth academies'
+;
+
 *
 Methodology: Could proc sort body type by leagues and then find the mean salary
 of players based off body types to find any correlation amongst leagues that 
@@ -94,6 +103,14 @@ title2 'Rationale: This could correlate based off the first question determining
 footnote1
 'based on the above tables we can see that the german, african, and english leagues 
 favor a bigger body type then latin teams who prefer a smaller body type'
+;
+
+footenote2
+'This is important to determine the playstyles and differences in team compositions'
+;
+
+footenote3
+'This might be due to the fact that some teams are much more dominant with defense and aggressive plays as opposed to dribbling and finesse'
 ;
 
 *
@@ -128,4 +145,12 @@ footnote1
 'body type does not necessarily correlate with value, might want to check and see if we
 can tie this more over to skill level or game statistics as body type does not
 associate over with skill level'
+;
+
+footnote2
+'This is important because even leagues that preferred bigger body types did not correlate with the pay of the body type showing that skill is valued higher'
+;
+
+footenote3
+'not sure why this is the case, if your team is centered around a specific playstyle, why throw in a player that is the complete opposite?'
 ;

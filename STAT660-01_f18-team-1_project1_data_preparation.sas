@@ -14,9 +14,12 @@ This file prepares the dataset described below for analysis.
 
 [Number of Features] 185
 
-[Data Source] https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset/downloads/complete.csv/5
+[Data Source] 
+https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
+was downloaded from kaggle
 
-[Data Dictionary] https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
+[Data Dictionary] 
+https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
 
 [Unique ID Schema] The column "Player ID" is a primary key. 
 ;
@@ -69,9 +72,9 @@ proc sort
     ;
 run;
 
-* build analytic dataset from fifa18 dataset with the least number of columns and
-minimal cleaning/transformation needed to address research questions in
-corresponding data-analysis files;
+* build analytic dataset from fifa18 dataset with the least number of 
+columns and minimal cleaning/transformation needed to address research 
+questions in corresponding data-analysis files;
 
 data fifa18_analytic_file;
     retain

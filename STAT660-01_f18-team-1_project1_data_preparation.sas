@@ -40,7 +40,7 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
 			filename tempfile TEMP;
 			proc http
 			    method="get"
-			    url="&inputDatasetURL."
+			    url="&url."
 			    out=tempfile
 			    ;
 			run;

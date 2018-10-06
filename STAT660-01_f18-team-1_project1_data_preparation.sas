@@ -46,8 +46,8 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
 			run;
 			proc import
 			    file=tempfile
-			    out=fifa18_raw
-			    dbms=xls;
+			    out=&dsn.
+			    dbms=&filetype.;
 			run;
 			filename tempfile clear;
 		%end;
@@ -56,13 +56,18 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
             %put Dataset &dsn. already exists. Please delete and try again.;
         %end;
 %mend;
+%loadDataIfNotAlreadyAvailable(
+    fifa18_raw,
+    &inputDatasetURL.,
+    xls
+)
 
 * check raw fifa18 dataset for duplicates with respect to its composite key;
 proc sort
-        nodupkey
+        noduprecs
         data=fifa18_raw
         dupout=fifa18_raw_dups
-        out=_null_
+        out=fifa18_nodups
     ;
     by
        Player ID
@@ -102,7 +107,7 @@ data fifa18_analytic_file;
         eur_wage
         overall
     ;
-    set fifa18_raw;
+    set fifa18_nodups;
 run;
 
 * 

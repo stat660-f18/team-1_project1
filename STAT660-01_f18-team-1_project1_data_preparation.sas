@@ -70,7 +70,7 @@ proc sort
         out=fifa18_nodups
     ;
     by
-       Player ID
+       ID
     ;
 run;
 

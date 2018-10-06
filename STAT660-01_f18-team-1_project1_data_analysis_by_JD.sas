@@ -25,18 +25,23 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title 1
-'Research Question: Are there any differences in the mean wages for each 
-nationality?'
+'Research Question: Are there any differences in the mean wages for each nationality?'
 ;
 
 title 2
-'Rationale: This should help us understand if the difference of nationality results 
-in various mean wages.'
+'Rationale: This should help us understand if the difference of nationality results in various mean wages.'
 ;
 
 footnote1
-'From the output, we can know that users from different country have different 
-mean wages'
+'From the output, we can know that users from different country have different mean wages.'
+;
+
+footnote2
+'By analyzing the result, we can infer that users from European countries tend to have hight wages than users from other countries.'
+;
+
+footnote3
+'This conclusion may be explained by the fact that Europeans usually contribute more time in playing this game.'
 ;
 *
 Methodology: Use PROC GLM step to perform F test and look at the p-value to decide 
@@ -58,31 +63,31 @@ proc glm
     model 
 		eur_wage = nationality/solution
 	; 
-Run;
-Quit;
+run;
+quit;
 title;
 footnote;
 
 
 
 title 1
-'Research Question:  How does the distribution of special skills for each body 
-type?'
+'Research Question:  How does the distribution of special skills for each body type?'
 ;
 
 title 2
-'Rationale: This helps identify the minimum, median, and maximunm "special" value, 
-as well as the special value in first and third quarter for each body type.'
+'Rationale: This helps identify the minimum, median, and maximunm "special" value, as well as the special value in first and third quarter for each body type.'
 ;
 
 footnote1
-'From the output, we know that users with the "normal" body type have the highest 
-maximum special.' 
+'From the output, we know that users with the "normal" body type have the highest maximum special. We can also find out that users with "normal" body type have the lowest minimum special too.' 
 ;
 
 footnote2
-'We can also find out that users with "normal" body type have the lowest minimum
-special too.'
+'This infers that choosing the normal body type does not affect the special value.'
+;
+
+footnote3
+'The reason is that the special value is not related to body type. There is no direct relationship between them.'
 ;
 *
 Methodology: Compute five-number summaries by body-type indicator variable
@@ -113,18 +118,19 @@ title 1
 ;
 
 title 2
-'Rationale: This would help determine which 3 clubs contribute most to high
-user value.'
+'Rationale: This would help determine which 3 clubs contribute most to high user value.'
 ;
 
 footnote1
-'From the result, we know that FC Bayern Munich has the highest mean value
-of 36881250.'
+'From the result, we know that FC Bayern Munich has the highest mean value of 36881250. We can also see that Real Madrid CF and FC Barcelona rank the second and the third, respectively.'
 ;
 
 footnote2
-'We can also see that Real Madrid CF and FC Barcelona rank the second and 
-the third, respectively.'
+'This result shows that joing FC Bayern Munich club may be helpful for the users to get a high value.'
+;
+
+footnote3
+'The reason is that the users in the FC Bayern Munich are more skillful in playing FIFA18.'
 ;
 *
 Methodology: Use PROC PRINT to print just the first three observations 

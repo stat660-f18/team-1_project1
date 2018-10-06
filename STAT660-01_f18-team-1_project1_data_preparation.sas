@@ -14,9 +14,12 @@ This file prepares the dataset described below for analysis.
 
 [Number of Features] 185
 
-[Data Source] https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset/downloads/complete.csv/5
+[Data Source] 
+https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
+data found in kaggle
 
-[Data Dictionary] https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
+[Data Dictionary] 
+https://www.kaggle.com/kevinmh/fifa-18-more-complete-player-dataset
 
 [Unique ID Schema] The column "Player ID" is a primary key. 
 ;
@@ -74,9 +77,9 @@ proc sort
     ;
 run;
 
-* build analytic dataset from fifa18 dataset with the least number of columns and
-minimal cleaning/transformation needed to address research questions in
-corresponding data-analysis files;
+* build analytic dataset from fifa18 dataset with the least number of 
+columns and minimal cleaning/transformation needed to address research 
+questions in corresponding data-analysis files;
 
 data fifa18_analytic_file;
     retain
@@ -113,8 +116,8 @@ run;
 * 
 Use PROC MEANS to compute the mean of eur_wage for
 League, and output the results to a temporary dataset, and use PROC SORT
-to extract and sort just the means the temporary dateset, which will be used as
-part of data analysis by LL.
+to extract and sort just the means the temporary dateset, which will be 
+used as part of data analysis by LL.
 ;
 
 proc means
@@ -134,7 +137,7 @@ proc means
 run;
 
 proc sort
-        data=fifa18_analytic_file_LEague_EurWage_breakdown(where=(_stat_="mean"))
+      data=fifa18_analytic_file_LEague_EurWage_breakdown(where=(_stat_="mean"))
     ;
     by
         descending eur_wage

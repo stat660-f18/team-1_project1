@@ -59,11 +59,13 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
             %put Dataset &dsn. already exists. Please delete and try again.;
         %end;
 %mend;
+
 %loadDataIfNotAlreadyAvailable(
     fifa18_raw,
     &inputDatasetURL.,
     xls
 )
+
 
 * check raw fifa18 dataset for duplicates with respect to its composite key;
 proc sort

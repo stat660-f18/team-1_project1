@@ -132,12 +132,12 @@ proc means
         eur_wage
     ;
     output
-        out=fifa18_analytic_file_League_EurWage_breakdown
+        out=fifa18_League_EurWage
     ;
 run;
 
 proc sort
-      data=fifa18_analytic_file_LEague_EurWage_breakdown(where=(_stat_="mean"))
+      data=fifa18_LEague_EurWage(where=(_stat_="mean"))
     ;
     by
         descending eur_wage
@@ -161,12 +161,12 @@ proc means
 		eur_value
 	;
     output 
-		out=fifa18_analytic_file_Club_EurVal_classification
+		out=fifa18_Club_EurVal
 	;
 run;
 
 proc sort 
-		data=fifa18_analytic_file_Club_EurVal_classification(where=(_STAT_="MEAN"))
+		data=fifa18_Club_EurVal(where=(_STAT_="MEAN"))
 	;
    	by 
 		descending eur_value

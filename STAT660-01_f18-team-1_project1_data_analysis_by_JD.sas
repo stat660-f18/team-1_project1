@@ -20,7 +20,7 @@ See included file for dataset properties
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
-* load external file that generates analytic dataset FIFA18_analytic_file;
+* load external file that generates analytic dataset fifa18_analytic_file;
 %include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 
 
@@ -144,7 +144,7 @@ find out the club with the highest user value
 ;
 proc print 			
 		noobs 
-		data=fifa18_analytic_file_temp1(obs=3)
+		data=fifa18_Club_EurVal(obs=3)
 	;
     id 
 		club

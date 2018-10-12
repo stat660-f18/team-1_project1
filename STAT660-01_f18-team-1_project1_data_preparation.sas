@@ -147,9 +147,10 @@ proc sort
 run;
 
 *
-Use PROC MEANS to compute the mean of eur_value for user club, 
-and output the results to dataset "fifa18_Club_EurVal". Use PROC SORT extract and 
-sort just the means in the dataset "fifa18_Club_EurVal" by descending oreder;
+To answering the third question in JD data-analysis file, use PROC MEANS 
+to compute the mean of eur_value for user club, and output the results to 
+dataset "fifa18_Club_EurVal". Use PROC SORT extract and sort just the 
+means in the dataset "fifa18_Club_EurVal" by descending oreder;
 
 proc means 
 	mean 

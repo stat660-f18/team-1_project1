@@ -55,14 +55,14 @@ Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute
 the mean wages for each nationality and sort the mean in descending order.
 ;
 proc glm 
-		data=fifa18_analytic_file
-	; 
+	data=fifa18_analytic_file
+    ; 
     class 
-		nationality
-	;
+	nationality
+    ;
     model 
-		eur_wage = nationality/solution
-	; 
+	eur_wage = nationality/solution
+    ; 
 run;
 quit;
 title;
@@ -98,15 +98,15 @@ Possible Follow-up Steps: we can use PROC SGPLOT statement to draw a line
 chart or bar graph, which presents the distribution more explicit.
 ;
 proc means 
-		min q1 median q3 max 
-		data=fifa18_analytic_file
-	;
+	min q1 median q3 max 
+	data=fifa18_analytic_file
+    ;
     class 
-		body_type
-	;
+	body_type
+    ;
     var 
-		special
-	;
+	special
+    ;
 run;
 title;
 footnote;
@@ -143,15 +143,15 @@ Possible Follow-up Steps: We can leave out the PROC MEANS step to simply
 find out the club with the highest user value
 ;
 proc print 			
-		noobs 
-		data=fifa18_Club_EurVal(obs=3)
-	;
+	noobs 
+	data=fifa18_Club_EurVal(obs=3)
+    ;
     id 
-		club
-	;
+	club
+    ;
     var 
-		eur_value
-	;
+	eur_value
+    ;
 run;
 title;
 footnote;

@@ -118,9 +118,7 @@ title2 'Rationale: This would help determine if leagues prefer different types o
 ;
 
 footnote1
-'body type does not necessarily correlate with value, might want to check and see if we 
-can tie this more over to skill level or game statistics as body type does not associate 
-over with skill level'
+'body type does not necessarily correlate with value, might want to check and see if we can tie this more over to skill level or game statistics as body type does not associate over with skill level'
 ;
 
 footnote2

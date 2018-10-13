@@ -20,15 +20,15 @@ See included file for dataset properties
 X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
-* load external file that generates analytic dataset FIFA18_analytic_file;
+* load external file that generates analytic dataset fifa18_analytic_file;
 %include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 
 
-title 1
+title1
 'Research Question: Are there any differences in the mean wages for each nationality?'
 ;
 
-title 2
+title2
 'Rationale: This should help us understand if the difference of nationality results in various mean wages.'
 ;
 
@@ -55,14 +55,14 @@ Possible Follow-up Steps: We can add a PROC MEANS and PROC SORT steps to compute
 the mean wages for each nationality and sort the mean in descending order.
 ;
 proc glm 
-		data=fifa18_analytic_file
-	; 
+	data=fifa18_analytic_file
+    ; 
     class 
-		nationality
-	;
+	nationality
+    ;
     model 
-		eur_wage = nationality/solution
-	; 
+	eur_wage = nationality/solution
+    ; 
 run;
 quit;
 title;
@@ -70,11 +70,11 @@ footnote;
 
 
 
-title 1
+title1
 'Research Question:  How does the distribution of special skills for each body type?'
 ;
 
-title 2
+title2
 'Rationale: This helps identify the minimum, median, and maximunm "special" value, as well as the special value in first and third quarter for each body type.'
 ;
 
@@ -98,26 +98,26 @@ Possible Follow-up Steps: we can use PROC SGPLOT statement to draw a line
 chart or bar graph, which presents the distribution more explicit.
 ;
 proc means 
-		min q1 median q3 max 
-		data=fifa18_analytic_file
-	;
+	min q1 median q3 max 
+	data=fifa18_analytic_file
+    ;
     class 
-		body_type
-	;
+	body_type
+    ;
     var 
-		special
-	;
+	special
+    ;
 run;
 title;
 footnote;
 
 
 
-title 1
+title1
 'Research Question: What are the top 3 clubs with the highest mean value?'
 ;
 
-title 2
+title2
 'Rationale: This would help determine which 3 clubs contribute most to high user value.'
 ;
 
@@ -143,15 +143,15 @@ Possible Follow-up Steps: We can leave out the PROC MEANS step to simply
 find out the club with the highest user value
 ;
 proc print 			
-		noobs 
-		data=fifa18_analytic_file_temp1(obs=3)
-	;
+	noobs 
+	data=fifa18_Club_EurVal(obs=3)
+    ;
     id 
-		club
-	;
+	club
+    ;
     var 
-		eur_value
-	;
+	eur_value
+    ;
 run;
 title;
 footnote;

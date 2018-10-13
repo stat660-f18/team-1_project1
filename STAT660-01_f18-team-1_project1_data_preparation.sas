@@ -59,11 +59,13 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
             %put Dataset &dsn. already exists. Please delete and try again.;
         %end;
 %mend;
+
 %loadDataIfNotAlreadyAvailable(
     fifa18_raw,
     &inputDatasetURL.,
     xls
 )
+
 
 * check raw fifa18 dataset for duplicates with respect to its composite key;
 proc sort
@@ -132,12 +134,12 @@ proc means
         eur_wage
     ;
     output
-        out=fifa18_analytic_file_League_EurWage_breakdown
+        out=fifa18_League_EurWage
     ;
 run;
 
 proc sort
-      data=fifa18_analytic_file_LEague_EurWage_breakdown(where=(_stat_="mean"))
+      data=fifa18_LEague_EurWage(where=(_stat_="mean"))
     ;
     by
         descending eur_wage
@@ -145,30 +147,31 @@ proc sort
 run;
 
 *
-Use PROC MEANS to compute the mean of eur_value for user club, 
-and output the results to a temportatry dataset. Use PROC SORT extract and 
-sort just the means the temporary dateset;
+To answering the third question in JD data-analysis file, use PROC MEANS 
+to compute the mean of eur_value for user club, and output the results to 
+dataset "fifa18_Club_EurVal". Use PROC SORT extract and sort just the 
+means in the dataset "fifa18_Club_EurVal" by descending oreder;
 
 proc means 
-		mean 
-		noprint 
-		data=fifa18_analytic_file
-	;
+	mean 
+	noprint 
+	data=fifa18_analytic_file
+    ;
     class 
-		club
-	;
+	club
+    ;
     var 
-		eur_value
-	;
+	eur_value
+    ;
     output 
-		out=fifa18_analytic_file_Club_EurVal_classification
-	;
+	out=fifa18_Club_EurVal
+    ;
 run;
 
 proc sort 
-		data=fifa18_analytic_file_Club_EurVal_classification(where=(_STAT_="MEAN"))
-	;
-   	by 
-		descending eur_value
-	;
+	data=fifa18_Club_EurVal(where=(_STAT_="MEAN"))
+    ;
+    by 
+	descending eur_value
+    ;
 run;

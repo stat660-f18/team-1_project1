@@ -152,7 +152,7 @@ proc freq
 		data=fifa18_analytic_file
 	; 
    	tables 
-		league*nationality*euro_value / crosslist
+		league*nationality*eur_value / crosslist
 	; 
 run;
 title;

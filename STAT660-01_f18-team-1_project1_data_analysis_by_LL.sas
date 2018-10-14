@@ -60,12 +60,13 @@ Possible Follow Up: Maybe a variable for starting position on the team whether
 it is starter, bench, or reserves
 ;
 
-proc freq 
+proc means 
 		data=fifa18_analytic_file
 	; 
-   	tables 
-		age*club
-	; 
+   	class club
+	;
+	var age
+	;
 run;
 title;
 footnote;

@@ -43,7 +43,7 @@ footnote2
 'This is important to understand why some leagues are of higher caliber as well as why some countries perform better in international tournaments'
 ;
 
-footenote3
+footnote3
 'I believe this is the case since some countries are behind infrastructure wise and prefer to buy the star players then to focus on youth academies'
 ;
 
@@ -81,11 +81,11 @@ footnote1
 'based on the above tables we can see that the german, african, and english leagues favor a bigger body type then latin teams who prefer a smaller body type'
 ;
 
-footenote2
+footnote2
 'This is important to determine the playstyles and differences in team compositions'
 ;
 
-footenote3
+footnote3
 'This might be due to the fact that some teams are much more dominant with defense and aggressive plays as opposed to dribbling and finesse'
 ;
 
@@ -129,7 +129,7 @@ footnote2
 'This is important because even leagues that preferred bigger body types did not correlate with the pay of the body type showing that skill is valued higher'
 ;
 
-footenote3
+footnote3
 'not sure why this is the case, if your team is centered around a specific playstyle, why throw in a player that is the complete opposite?'
 ;
 

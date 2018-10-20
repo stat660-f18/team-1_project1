@@ -105,14 +105,15 @@ order to determine whether a league prefers a faster/lighter finesse player or
 a physically bigger and muscular "power" player 
 ;
 
-proc corr 
+ods graphics on / width = 8in height = 8in;
+proc sgplot 
 		data=fifa18_analytic_file
 	; 
-  	var
-		height_cm weight_kg
+  	vbox
+		eur_wage / category = nationality
 	;
-	with
-		eur_value
+	where overall > 80
+	;
 run;
 title;
 footnote;
@@ -151,12 +152,14 @@ players in each league and then take the mean salaries and values of each
 leauge based on that percentage of non-home grown players
 ;
 
-proc freq 
+proc corr 
 		data=fifa18_analytic_file
 	; 
-   	tables 
-		league*nationality*eur_value / crosslist
-	; 
+  	var
+		height_cm weight_kg
+	;
+	with
+		eur_value
 run;
 title;
 footnote;

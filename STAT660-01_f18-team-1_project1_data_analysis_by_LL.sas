@@ -24,7 +24,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 ;
 
 * load external file that generates analytic dataset fifa18_analytic_file;
-%include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
+%include '.\STAT660-01_f18-team-1_project1_data_preparation.sas'
 ;
 
 title1 

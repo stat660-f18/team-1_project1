@@ -24,7 +24,7 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 ;
 
 * load external file that generates analytic dataset fifa18_analytic_file;
-%include '.\STAT660-01 f18-team-1 project1 data preparation.sas'
+%include '.\STAT660-01_f18-team-1_project1_data_preparation.sas';
 ;
 
 title1 
@@ -43,7 +43,7 @@ footnote2
 'This is important to understand why some leagues are of higher caliber as well as why some countries perform better in international tournaments'
 ;
 
-footenote3
+footnote3
 'I believe this is the case since some countries are behind infrastructure wise and prefer to buy the star players then to focus on youth academies'
 ;
 
@@ -60,12 +60,13 @@ Possible Follow Up: Maybe a variable for starting position on the team whether
 it is starter, bench, or reserves
 ;
 
-proc freq 
+proc means 
 		data=fifa18_analytic_file
 	; 
-   	tables 
-		age*club
-	; 
+   	class club
+	;
+	var age
+	;
 run;
 title;
 footnote;
@@ -81,11 +82,11 @@ footnote1
 'based on the above tables we can see that the german, african, and english leagues favor a bigger body type then latin teams who prefer a smaller body type'
 ;
 
-footenote2
+footnote2
 'This is important to determine the playstyles and differences in team compositions'
 ;
 
-footenote3
+footnote3
 'This might be due to the fact that some teams are much more dominant with defense and aggressive plays as opposed to dribbling and finesse'
 ;
 
@@ -104,12 +105,15 @@ order to determine whether a league prefers a faster/lighter finesse player or
 a physically bigger and muscular "power" player 
 ;
 
-proc freq 
+ods graphics on / width = 8in height = 8in;
+proc sgplot 
 		data=fifa18_analytic_file
 	; 
-  	tables 
-		league*eur_wage*body_type
-	; 
+  	vbox
+		eur_wage / category = nationality
+	;
+	where overall > 80
+	;
 run;
 title;
 footnote;
@@ -129,7 +133,7 @@ footnote2
 'This is important because even leagues that preferred bigger body types did not correlate with the pay of the body type showing that skill is valued higher'
 ;
 
-footenote3
+footnote3
 'not sure why this is the case, if your team is centered around a specific playstyle, why throw in a player that is the complete opposite?'
 ;
 
@@ -148,12 +152,14 @@ players in each league and then take the mean salaries and values of each
 leauge based on that percentage of non-home grown players
 ;
 
-proc freq 
+proc corr 
 		data=fifa18_analytic_file
 	; 
-   	tables 
-		league*nationality*euro_value / crosslist
-	; 
+  	var
+		height_cm weight_kg
+	;
+	with
+		eur_value
 run;
 title;
 footnote;

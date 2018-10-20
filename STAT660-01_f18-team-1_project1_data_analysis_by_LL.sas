@@ -105,12 +105,14 @@ order to determine whether a league prefers a faster/lighter finesse player or
 a physically bigger and muscular "power" player 
 ;
 
-proc freq 
+proc corr 
 		data=fifa18_analytic_file
 	; 
-  	tables 
-		league*eur_wage*body_type
-	; 
+  	var
+		height_cm weight_kg
+	;
+	with
+		eur_value
 run;
 title;
 footnote;

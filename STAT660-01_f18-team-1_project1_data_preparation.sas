@@ -40,7 +40,7 @@ https://github.com/stat660/team-1_project1/blob/master/FIFA_Player_Data.xls?raw=
     %then
         %do;
             %put Loading dataset &dsn. over the wire now...;
-			filename tempfile TEMP;
+			filename tempfile "%sysfunc(getoption(work))/tempfile.xlsx";
 			proc http
 			    method="get"
 			    url="&url."

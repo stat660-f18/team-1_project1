@@ -160,6 +160,7 @@ proc corr
 	;
 	with
 		eur_value
+	;	
 run;
 title;
 footnote;
